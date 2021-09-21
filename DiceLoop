@@ -1,0 +1,31 @@
+import turtle
+import math
+def main():
+    # Turtle
+    win = turtle.Screen()
+    t1 = turtle.Turtle()
+    t1.width(5)
+    win.bgcolor ("DeepSkyBlue")
+    width = t1.width()
+    sideLength = 400
+    sides = 4
+    t1.up()
+
+
+    #Location
+    x = -200
+    y = 100
+    diceValue = 1
+    for i in range(6):
+        t1.goto(x,y)
+        t1.down()
+        diceValue= i + 1
+        for i in range(4):
+            t1.forward(sideLength/sides)
+            t1.left(360/sides)
+            x = x+8*width
+           
+            
+            
+
+main()
