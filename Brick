@@ -1,0 +1,227 @@
+# Hunter Potera
+# 9/22/21
+# Dice Roller
+# This program has 6 dice from 1-6. And 2 dice on a second row that are randomized.
+
+
+import turtle
+import math
+import random
+def main():
+    # Turtle
+    win = turtle.Screen()
+    t1 = turtle.Turtle()
+    t1.width(5)
+    win.bgcolor ("DeepSkyBlue")
+    sideLength = 400
+    sides = 4
+    width = sideLength/sides
+    t1.up()
+    #Location: Some of the x's needed to be reset because they got incremented. Ie x and x1.
+    x = -400
+    x1 = -400
+    y = 100
+    x2 = -200
+    x3 = 0
+    x4 = 200
+    x5 = 400
+    x6 = 600
+    x7 = 0
+    x8 = 200
+    y2 = -100
+    
+    #diceValue = 1
+
+    for i in range(6):
+        t1.goto(x,y)
+        print (x,y)
+        t1.down()
+        t1.fillcolor("white")
+        t1.begin_fill()
+        diceValue = i + 1
+        for i in range(4):
+            t1.forward(sideLength/sides)
+            t1.right(360/sides)
+            x = x+.5*width
+        t1.end_fill()
+        t1.up()
+
+        if diceValue == 1:
+            t1.goto(x1+50,y-50)
+            drawD1 = t1.dot(width//6)
+        elif diceValue == 2:
+            t1.goto(x2+25,y-25)
+            drawD2 = t1.dot(width//6)
+            t1.goto(x2+75,y-75)
+            drawD2 = t1.dot(width//6)
+        elif diceValue == 3:
+            t1.goto(x3+25,y-25)
+            drawD3 = t1.dot(width//6)
+            t1.goto(x3+50,y-50)
+            drawD3 = t1.dot(width//6)
+            t1.goto(x3+75,y-75)
+            drawD3 = t1.dot(width//6)
+        elif diceValue == 4:
+            t1.goto(x4+25,y-25)
+            drawD4 = t1.dot(width//6)
+            t1.goto(x4+25,y-75)
+            drawD4 = t1.dot(width//6)
+            t1.goto(x4+75,y-25)
+            drawD4 = t1.dot(width//6)
+            t1.goto(x4+75,y-75)
+            drawD4 = t1.dot(width//6)
+        elif diceValue == 5:
+            t1.goto(x5+25,y-25)
+            drawD5 = t1.dot(width//6)
+            t1.goto(x5+75,y-75)
+            drawD5 = t1.dot(width//6)
+            t1.goto(x5+25,y-75)
+            drawD5 = t1.dot(width//6)
+            t1.goto(x5+75,y-25)
+            drawD5 = t1.dot(width//6)
+            t1.goto(x5+50,y-50)
+            drawD5 = t1.dot(width//6)
+        else:
+            t1.goto(x6+25,y-25)
+            drawD6 = t1.dot(width//6)
+            t1.goto(x6+75,y-25)
+            drawD6 = t1.dot(width//6)
+            t1.goto(x6+25,y-50)
+            drawD6 = t1.dot(width//6)
+            t1.goto(x6+75,y-50)
+            drawD6 = t1.dot(width//6)
+            t1.goto(x6+25,y-75)
+            drawD6 = t1.dot(width//6)
+            t1.goto(x6+75,y-75)
+            drawD6 = t1.dot(width//6)
+  #Roll 1  
+    diceValue=random.randint(1,6)
+    d2=diceValue
+   
+    t1.up()
+    
+    for i in range(2):
+        t1.goto(x7,y2)
+        print (x7,y2)
+        t1.down()
+        t1.fillcolor("white")
+        t1.begin_fill()
+        for i in range(4):
+            t1.forward(sideLength/sides)
+            t1.right(360/sides)
+            x7 = x7+.5*width
+        t1.end_fill()
+        t1.up() 
+    t1.up()
+    t1.end_fill()
+    x7=0
+    if diceValue == 1:
+        t1.goto(x7+50,y2-50)
+        drawD1 = t1.dot(width//6)
+    elif diceValue == 2:
+        t1.goto(x7+25,y2-25)
+        drawD2 = t1.dot(width//6)
+        t1.goto(x7+75,y2-75)
+        drawD2 = t1.dot(width//6)
+    elif diceValue == 3:
+        t1.goto(x7+25,y2-25)
+        drawD3 = t1.dot(width//6)
+        t1.goto(x7+50,y2-50)
+        drawD3 = t1.dot(width//6)
+        t1.goto(x7+75,y2-75)
+        drawD3 = t1.dot(width//6)
+    elif diceValue == 4:
+        t1.goto(x7+25,y-25)
+        drawD4 = t1.dot(width//6)
+        t1.goto(x7+25,y-75)
+        drawD4 = t1.dot(width//6)
+        t1.goto(x7+75,y-25)
+        drawD4 = t1.dot(width//6)
+        t1.goto(x7+75,y-75)
+        drawD4 = t1.dot(width//6)
+    elif diceValue == 5:
+        t1.goto(x7+25,y2-25)
+        drawD5 = t1.dot(width//6)
+        t1.goto(x7+75,y2-75)
+        drawD5 = t1.dot(width//6)
+        t1.goto(x7+25,y2-75)
+        drawD5 = t1.dot(width//6)
+        t1.goto(x7+75,y2-25)
+        drawD5 = t1.dot(width//6)
+        t1.goto(x7+50,y2-50)
+        drawD5 = t1.dot(width//6)
+    else:
+        t1.goto(x7+25,y2-25)
+        drawD6 = t1.dot(width//6)
+        t1.goto(x7+75,y2-25)
+        drawD6 = t1.dot(width//6)
+        t1.goto(x7+25,y2-50)
+        drawD6 = t1.dot(width//6)
+        t1.goto(x7+75,y2-50)
+        drawD6 = t1.dot(width//6)
+        t1.goto(x7+25,y2-75)
+        drawD6 = t1.dot(width//6)
+        t1.goto(x7+75,y2-75)
+        drawD6 = t1.dot(width//6)
+#Roll 2
+    diceValue=random.randint(1,6)
+    d1=diceValue
+    x8=200
+    if diceValue == 1:
+        t1.goto(x8+50,y2-50)
+        drawD1 = t1.dot(width//6)
+    elif diceValue == 2:
+        t1.goto(x8+25,y2-25)
+        drawD2 = t1.dot(width//6)
+        t1.goto(x8+75,y2-75)
+        drawD2 = t1.dot(width//6)
+    elif diceValue == 3:
+        t1.goto(x8+25,y2-25)
+        drawD3 = t1.dot(width//6)
+        t1.goto(x8+50,y2-50)
+        drawD3 = t1.dot(width//6)
+        t1.goto(x8+75,y2-75)
+        drawD3 = t1.dot(width//6)
+    elif diceValue == 4:
+        t1.goto(x8+25,y-25)
+        drawD4 = t1.dot(width//6)
+        t1.goto(x8+25,y-75)
+        drawD4 = t1.dot(width//6)
+        t1.goto(x8+75,y-25)
+        drawD4 = t1.dot(width//6)
+        t1.goto(x8+75,y-75)
+        drawD4 = t1.dot(width//6)
+    elif diceValue == 5:
+        t1.goto(x8+25,y2-25)
+        drawD5 = t1.dot(width//6)
+        t1.goto(x8+75,y2-75)
+        drawD5 = t1.dot(width//6)
+        t1.goto(x8+25,y2-75)
+        drawD5 = t1.dot(width//6)
+        t1.goto(x8+75,y2-25)
+        drawD5 = t1.dot(width//6)
+        t1.goto(x8+50,y2-50)
+        drawD5 = t1.dot(width//6)
+    else:
+        t1.goto(x8+25,y2-25)
+        drawD6 = t1.dot(width//6)
+        t1.goto(x8+75,y2-25)
+        drawD6 = t1.dot(width//6)
+        t1.goto(x8+25,y2-50)
+        drawD6 = t1.dot(width//6)
+        t1.goto(x8+75,y2-50)
+        drawD6 = t1.dot(width//6)
+        t1.goto(x8+25,y2-75)
+        drawD6 = t1.dot(width//6)
+        t1.goto(x8+75,y2-75)
+        drawD6 = t1.dot(width//6)
+    theSum = (d1+d2)
+    if theSum <= 7:
+        (theSum)-1
+    else:
+        13-(theSum)
+    probability = float((theSum-1)/36*100)
+    print ('The probability of you rolling a', int(theSum),'is',(format(probability,".4f")),'%')
+   
+
+main()      
