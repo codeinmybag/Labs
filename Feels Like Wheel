@@ -1,0 +1,30 @@
+# Hunter Potera
+# 9/27/2021
+# Desciption: This program creates a table for the Feels Like temperature taking wind and actual temperature into account.
+
+import math
+def main():
+    print()
+    print(format("Wind Chill Factors (Feels Like)", "^93s"))
+    print()
+    print(format("Temperature", "^93s"))
+    print()
+
+    print(format("Wind", ">5s"), end = "")
+    print(" | ", end="")
+    for y in range(40,-45,-5):
+        print(format(y,"5d"), end = "")
+    print()
+
+    print("-" *  93)
+
+    for x in range(5,61,5):
+        print(format(x, "5d"), end = "")
+        print(" | ", end ="")
+        for y in range(40,-45,-5):
+            print (format(35.74+0.6215 * y - 35.75 * x ** 0.16 + 0.4275 * y * x ** 0.16, "5.0f"), end = "")
+        print()
+        
+if __name__ == "__main__":
+    main()
+
