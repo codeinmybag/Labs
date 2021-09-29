@@ -9,16 +9,16 @@ def main():
     turtle.speed(0)
     colorList = ["red","yellow","green","cyan","blue","magenta"]
     index = 0
-    for x in range(500):
-        t1.color(colorList[index])
-        t1.forward(500)
-        t1.right(98)
-        index = (index + 1) % len(colorList)
-    
-    input('Pick a color:  ')
+    pick = input('Pick a color:  ')
     colorList.insert(2,pick)
     del colorList[3]
     colorList.append("chartreuse")
     colorList[2] = "firebrick"
+    for x in range(500):
+        t1.color(colorList[index])
+        t1.forward(x)
+        t1.right(98)
+        index = (index + 1) % len(colorList)
+    
     turtle.mainloop()
 main()
