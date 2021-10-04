@@ -1,0 +1,32 @@
+import turtle
+def main():
+    turtle.setup(800,800)
+    t1 = turtle.Turtle()
+    turtle.hideturtle()
+    turtle.speed(0)
+    t1.pensize(1)
+    t1.up()
+    t1.goto(-150,0)
+    t1.down()
+
+    colorList = []
+    numberofColors = 100
+    steps = (1/6)/numberofColors
+    increment = 1/steps
+    red = 1.0
+    green = 0.0
+    blue = 0.0
+
+    while green < 1.0 : 
+        colorList.append(red,green,blue)
+        green = green + increment
+        print (colorList)
+    for x in colorList:
+        t1.color((red,green,blue))
+        t1.forward(300)
+        t1.left(180)+180/(len(colorList))
+    
+    
+    
+main()
+    
