@@ -11,22 +11,22 @@ def main():
 
     colorList = []
     numberofColors = 100
-    steps = (1/6)/numberofColors
+    steps = numberofColors/(1/6)
     increment = 1/steps
     red = 1.0
     green = 0.0
     blue = 0.0
 
-    while green < 1.0 : 
-        colorList.append(red,green,blue)
+    while green < 1.0: 
+        
+        colorList.append(("red","green","blue"))
         green = green + increment
-        print (colorList)
+        
     for x in colorList:
         t1.color((red,green,blue))
         t1.forward(300)
-        t1.left(180)+180/(len(colorList))
+        t1.left(180+180/(len(colorList)))
     
     
     
 main()
-    
