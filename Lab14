@@ -1,3 +1,8 @@
+# Hunter Potera
+# 10/12/21
+# This program uses functions to draw polygons
+
+
 import turtle
 import random
 
@@ -12,13 +17,25 @@ def main():
     for i in range(10):
         x = random.randint(-300, 300)
         y = random.randint(-300,300)
-        location = ((x,y))
+        tuple = (x,y)
         color = random.choice(colorList)
         sides = random.randint(3,10)
-        drawPolygon(t1,x,y,color,sides)
-
+        drawPolygon(t1,tuple, sides, color)
+    turtle.mainloop()
+def sideLength():
+    '''
+    This fucntion is responbile for the side length.
+    '''
+    for i in range(sides):
+        t1.forward(sides)
+        t1.left(360/sides)
+        return size/sides
+    sideLength()
 
 def drawPolygon(t1,location, sides = 3 , fillcolor = "blue", size = 400):
+    '''
+    This function will draw a polyon given the turtle, the coordinates, and the color
+    '''
     t1.up()
     t1.goto(location)
     t1.fillcolor(color)
@@ -27,10 +44,6 @@ def drawPolygon(t1,location, sides = 3 , fillcolor = "blue", size = 400):
     t1.endfill()
     
     drawPolygon()
-def sideLength():
-    for i in range(sides):
-        t1.forward(sides)
-        t1.left(360/sides)
-        return size/sides
-    sideLength()
-main()
+
+if __name__  == "__main__":
+    main()
