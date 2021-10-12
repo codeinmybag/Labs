@@ -1,20 +1,6 @@
 import turtle
 import random
 
-def drawPolygon(t1,location, sides = 3 , color = "blue", size = 400):
-    t1.up()
-    t1.goto(location)
-    t1.fillcolor(color)
-    t1.beginfill()
-    t1.down()
-    t1.endfill()
-    
-    drawPolygon()
-def sideLength():
-    sidesS= 360/sides
-    return sides
-    sideLength()
-
 def main():
     turtle.setup(1000,800)
     t1 = turtle.Turtle()
@@ -29,6 +15,22 @@ def main():
         location = ((x,y))
         color = random.choice(colorList)
         sides = random.randint(3,10)
-        drawPolygon()
+        drawPolygon(t1,x,y,color,sides)
 
+
+def drawPolygon(t1,location, sides = 3 , fillcolor = "blue", size = 400):
+    t1.up()
+    t1.goto(location)
+    t1.fillcolor(color)
+    t1.beginfill()
+    t1.down()
+    t1.endfill()
+    
+    drawPolygon()
+def sideLength():
+    for i in range(sides):
+        t1.forward(sides)
+        t1.left(360/sides)
+        return size/sides
+    sideLength()
 main()
