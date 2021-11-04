@@ -1,0 +1,160 @@
+
+
+import turtle
+import random
+import time
+'''This is the main function it contains turtle information and variables'''
+
+
+
+def main():
+    #New 
+    dieTuple= []
+    filename = input("Enter name of parameters file:   ")
+    inputFile_Handle = open(filename,"r")
+    
+    line = inputFile_Handle.readline()
+    win_width, win_height = line.strip().split(':')
+    turtle.setup(int(win_width),int(win_height))
+
+    #Roll Count
+    roll_count = int(inputFile_Handle.readline())
+    print (roll_count)
+
+    line = inputFile_Handle.readline()
+    while line != "":
+        dieTuple.append(line.strip().split(':'))
+        line = inputFile_Handle.readline()
+        
+        
+    inputFile_Handle.close()
+    print (dieTuple)
+
+
+    win = turtle.Screen()
+    win.bgcolor("lightblue")
+    t1 = turtle.Turtle()
+    turtle.hideturtle()
+    t1.speed(0)
+    sideLength = 400
+    sides = 4
+    width = sideLength/sides
+        
+    print (dieTuple[0][1])
+    
+
+    #for j in range(len(dieTuple)):
+    
+        #dieTuple[j][0]= random.randint(1,6)
+        #dieTuple[j][2][1]= x
+        #dieTuple[j][2][2]= y
+        #dieTuple[j][2][3]= width
+        #dieTuple[j][2][4]= "white"
+        #x = x + 1.5* width
+        
+    #for j in range(len(dieTuple)):
+        #dieValue = dieTuple[j][0]    
+        #drawDie(t1,*dieTuple[j])
+        #x = x + 1.5* width
+    # print(...file=<filehandlevariable>)
+       
+    for i in range(len(dieTuple)):
+        dieValue = int(dieTuple[i][0])
+        x =  int(dieTuple[i][1])
+        y = int(dieTuple[i][2])
+        width = int(dieTuple[i][3])
+        fillcolor = dieTuple[i][4]
+
+    #for i in range(len(dieTuple)):  
+        drawDie(t1,dieValue,x,y,width,fillcolor)
+        
+        #x = x + 1.5* width
+
+    #Roll Count Loop
+        
+    for i in range(roll_count):
+        for j in range(len(dieTuple)):
+            x =  int(dieTuple[j][1])
+            y = int(dieTuple[j][2])
+            width = int(dieTuple[j][3])
+            fillcolor = dieTuple[j][4]
+            drawDie(t1,rollDice(dieTuple),x,y,width,fillcolor)
+            time.sleep(4) 
+
+ 
+    turtle.mainloop()
+
+'''This assigns values to the dice & simulates a roll'''
+def rollDice(dieTuple):
+    for x in range(len(dieTuple)-1):
+        dieTuple[x][0] = random.randint(1,6)
+   
+
+'''This function draws the die when called'''        
+def drawDie(t1,dieValue, x,y,width,fillcolor="white"):
+    t1.up()
+    t1.goto(x,y)
+    t1.down()
+    t1.fillcolor(fillcolor)
+    t1.begin_fill()
+    for i in range(4):
+        t1.forward(width)
+        t1.right(90)
+    t1.end_fill()
+    t1.up()
+    drawDots(t1,dieValue,x,y,width)
+
+'''This function draws the dots,proportionately, depending on the die value'''
+def drawDots(t1,dieValue,x,y,width):
+    dot_width = width//6
+    
+    if dieValue == 1:
+        drawCenterDots(t1,x,y,width,dot_width)
+    
+    elif dieValue == 2:
+        drawCornerDots(t1,x,y,width,dot_width)
+
+    elif dieValue == 3:
+        drawCenterDots(t1,x,y,width,dot_width)
+        drawOtherCornerDots(t1,x,y,width,dot_width)
+
+    elif dieValue == 4:
+        drawCornerDots(t1,x,y,width,dot_width)
+        drawOtherCornerDots(t1,x,y,width,dot_width)
+
+    elif dieValue == 5:
+        drawCenterDots(t1,x,y,width,dot_width)
+        drawCornerDots(t1,x,y,width,dot_width)
+        drawOtherCornerDots(t1,x,y,width,dot_width)
+    else: 
+        drawCornerDots(t1,x,y,width,dot_width)
+        drawOtherCornerDots(t1,x,y,width,dot_width)
+        drawSideDots(t1,x,y,width,dot_width)
+'''This function draws the center dots'''
+def drawCenterDots(t1,x,y,width,dot_width):
+    t1.goto(x+width/2,y-width/2)
+    t1.dot(dot_width)
+
+'''This function draws the corner dots for the upper left and bottom right'''
+def drawCornerDots(t1,x,y,width,dot_width):
+    t1.goto(x + width/4,y-width/4)
+    t1.dot(dot_width)
+    t1.goto(x+width*3/4,y-width*3/4)
+    t1.dot(dot_width)
+
+'''This function draws the corner dots for the upper right and bottom left'''
+def drawOtherCornerDots(t1,x,y,width,dot_width):
+    t1.goto(x+width*3/4,y-width/4)
+    t1.dot(dot_width)
+    t1.goto(x+width/4,y-width*3/4)
+    t1.dot(dot_width)
+
+'''This function draws 2 side dots for 6''' 
+def drawSideDots(t1,x,y,width,dot_width):
+    t1.goto(x + width/4, y-width/2)
+    t1.dot(dot_width)
+    t1.goto(x + width*3/4, y-width/2)
+    t1.dot(dot_width)
+
+main()
+
